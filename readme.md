@@ -93,18 +93,5 @@ You can save extracted tables as:
 - CSV Files
 - SQL Database (SQLite)
 
-Modify the appropriate storage methods in `data_extractor.py` as needed.
 
-## Directory Structure
-
-```
-pdf-table-extractor/
-├── extractors/
-│   ├── data_extractor.py       # Handles data extraction from PDF
-│   ├── storage.py              # Contains FileStorage and SQLStorage for saving data
-├── pdfs/                       # Directory for input PDF files
-├── output/                     # Directory for output CSV files
-├── requirements.txt            # List of dependencies
-└── main.py                     # Main script to run the extraction process
-```
 
