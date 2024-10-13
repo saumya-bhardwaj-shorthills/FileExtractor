@@ -1,7 +1,10 @@
 ## Features
 
 - Extract plain text from a PDF.
+- Extract Images and store them in directory
+- Extract URLS
 - Extract tables from a PDF and save them as CSV files.
+- Extract all metadata of files
 - Save extracted tables to an SQL database.
 
 
@@ -27,8 +30,8 @@ The project requires several Python libraries to function properly. These can be
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/pdf-table-extractor.git
-   cd pdf-table-extractor
+   git clone https://github.com/saumya-bhardwaj-shorthills/FileExtractor.git
+   cd FileExtractor
    ```
 
 2. Install the required dependencies:
