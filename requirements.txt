@@ -1,0 +1,5 @@
+PyPDF2==3.0.1
+pandas==2.1.1
+camelot-py[cv]==0.10.1
+opencv-python==4.8.0.76
+ghostscript==0.7
