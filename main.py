@@ -4,9 +4,11 @@ from loaders.docx_loader import DOCXLoader
 from loaders.ppt_loader import PPTLoader
 from extractors.data_extractor import DataExtractor
 from storage.file_storage import FileStorage
+from storage.sql_storage import SQLStorage
 
 def main():
-    file_path = "sample1.pptx"  # Change this to the file you want to process
+    # Specify the file path to process
+    file_path = "./Test-resource/PDF/sample4.pdf"  # Change this to the file you want to process
 
     # Determine the file type and use the appropriate loader
     if file_path.endswith(".pdf"):
@@ -48,22 +50,45 @@ def main():
     output_dir = os.path.join("extracted_data", base_name)
     file_storage = FileStorage(output_dir)
 
-    # Save the extracted text
-    file_storage.save(extracted_text, os.path.basename(file_path), 'text')
+    # Save the extracted text to files
+    if extracted_text:
+        file_storage.save(extracted_text, os.path.basename(file_path), 'text')
 
-    # Save the extracted images
+    # Save the extracted images to files
     if images:
         file_storage.save(images, os.path.basename(file_path), 'image')
 
-    # Save the extracted URLs (if any)
+    # Save the extracted URLs to files (if any)
     if urls:
         file_storage.save(urls, os.path.basename(file_path), 'url')
 
-    # Save the extracted tables (if any)
+    # Save the extracted tables to files (if any)
     if tables:
         file_storage.save(tables, os.path.basename(file_path), 'table')
 
-    print(f"Extracted data saved to: {output_dir}")
+    # Save the extracted data into SQLite
+    db_path = "extracted_data.db"  # Path to your SQLite database
+    sql_storage = SQLStorage(db_path)
+
+    # Save the extracted text to SQLite
+    if extracted_text:
+        sql_storage.save(extracted_text, 'text')
+
+    # Save the extracted images to SQLite
+    if images:
+        sql_storage.save(images, 'image')
+
+    # Save the extracted URLs to SQLite (if any)
+    if urls:
+        sql_storage.save(urls, 'url')
+
+    # Save the extracted tables to SQLite (if any)
+    if tables:
+        sql_storage.save(tables, 'table')
+
+    print(f"Extracted data saved to: {output_dir} and SQLite database: {db_path}")
 
 if __name__ == "__main__":
     main()
+
+
